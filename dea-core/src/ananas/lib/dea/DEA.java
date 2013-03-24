@@ -2,15 +2,18 @@ package ananas.lib.dea;
 
 public interface DEA {
 
-	int state_ok = 0;
-	int state_too_short = 1;
-	int state_too_long = 2;
+	String state_ok = "OK";
+	String state_too_short = "TOO_SHORT";
+	String state_too_long = "TOO_LONG";
+	String state_error = "ERROR";
 
-	int getState();
+	String getState();
 
 	boolean isValid();
 
 	String getNumberString();
+
+	String toTargetURL();
 
 	class Factory {
 
