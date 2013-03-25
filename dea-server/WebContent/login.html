@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function doLogin(editor_id) {
+		var edit = document.getElementById(editor_id);
+		var openid = edit.value;
+		//	alert("will login with openid : " + openid);
+
+		var xhttp = new XMLHttpRequest();
+		xhttp.open("POST", "Login", true);
+		xhttp.setRequestHeader("openid", openid);
+		xhttp.onreadystatechange = function(event) {
+			var xhttp = event.target;
+			var location = xhttp.getResponseHeader("Location");
+			if (location != null) {
+				//	alert("Location : " + location);
+				window.location = location;
+			}
+		};
+		xhttp.send(null);
+	}
+</script>
+</head>
+<body>
+
+	<h1>Welcome to use DEA to make easy way to your OpenID !</h1>
+
+	<tr>
+		<td><img src="image/icon_openid.png" /></td>
+		<td><input id="edit_openid" type="text"
+			value="https://me.yahoo.com/xukun0217" /></td>
+		<td><input type="submit" onclick='doLogin("edit_openid")' /></td>
+	</tr>
+
+</body>
+</html>
