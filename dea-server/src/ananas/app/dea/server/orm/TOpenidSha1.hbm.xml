@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="ananas.app.dea.server.orm">
+
+	<class name="TOpenidSha1" table="T_OPENID_SHA1" >
+
+		<id name="sha1" type="binary">
+			<column name="sha1" length="20" />
+			<generator class="assigned" />
+		</id>
+
+		<property name="openid" type="string">
+			<column name="openid" length="128" />
+		</property>
+
+		<property name="dea" type="long">
+			<column name="dea" />
+		</property>
+
+	</class>
+
+</hibernate-mapping>

@@ -3,14 +3,23 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="script/account.js"></script>
 <script type="text/javascript">
-	window.location = "home.html";
-	//window.location = "login.html";
+	//	window.location = "login.html";
+
+	function initPage() {
+		var accountBox = new AccountBox();
+		accountBox.setParent(document.getElementById("id_account_box"));
+		accountBox.load();
+	}
 </script>
 </head>
-<body>
+<body onload="initPage()">
 
 	<h1>Welcome to use DEA to make easy way to your OpenID !</h1>
+
+
+	<div id="id_account_box"></div>
 
 </body>
 </html>

@@ -1,4 +1,4 @@
-package ananas.app.dea.server.servlet;
+package ananas.app.dea.server.helper;
 
 import java.io.IOException;
 import java.util.Enumeration;
@@ -24,7 +24,7 @@ public class SessionAuthBinding {
 	public static final String session_attr_key = SessionAuthBinding.class
 			.getName();
 
-	public static final String is_return_key = "is_return";
+	private static final String is_return_key = "is_return";
 
 	private static final Logger logger = (new AbstractLoggerFactory() {
 	}).getLogger();
@@ -42,6 +42,10 @@ public class SessionAuthBinding {
 
 	public SessionAuthBinding(String id) {
 		this.mId = id;
+	}
+
+	public String getOpenID() {
+		return this.mOpenID;
 	}
 
 	public boolean isOnline() {
