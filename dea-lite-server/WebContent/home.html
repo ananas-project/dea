@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>DEA lite</title>
+
+
+<script type="text/javascript"
+	src="http://ajax.microsoft.com/ajax/jquery/jquery-1.4.min.js">
+	
+</script>
+
+<script>
+	function onHttpResponse(http) {
+
+		//	http = new XMLHttpRequest();
+
+		var code = http.status;
+		var msg = http.statusText;
+
+		var txt = "HTTP " + code + " " + msg;
+		txt = txt + "\n" + http.responseText;
+
+		$("#output").text(txt);
+
+	}
+
+	function proc(txt) {
+		var url = "Proc";
+		var http = new XMLHttpRequest();
+		http.open("POST", url, true);
+		http.onreadystatechange = function(event) {
+			var ht = event.target;
+			if (ht.readyState == 4) {
+				onHttpResponse(ht);
+			}
+		};
+		http.send(txt);
+	}
+
+	$(document).ready(function() {
+		$("#button_go").click(function() {
+			var txt = $("#edit_input").attr("value");
+			//alert("go:" + txt);
+			proc(txt);
+		});
+	});
+</script>
+
+</head>
+<body>
+
+
+	<div>
+		<input id="edit_input" type='text' />
+	</div>
+	<div>
+		<button id='button_go'>zouni</button>
+	</div>
+
+	<div id='output'></div>
+
+</body>
+</html>
